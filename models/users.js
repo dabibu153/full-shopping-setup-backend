@@ -37,11 +37,7 @@ function validationLogin(req, res) {
     password: Joi.string().required().min(6),
   });
 
-  const result = schema.validate(req.body);
-  if (result.error) {
-    res.status(400).send("bad input for login");
-    return;
-  }
+  return (result = schema.validate(req.body));
 }
 
 module.exports.User = User;

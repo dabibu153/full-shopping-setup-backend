@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 var cors = require("cors");
-const products = require("./routes/products");
-const users = require("./routes/users");
+const products = require("./products");
+const users = require("./users");
 
 mongoose
   .connect("mongodb://localhost/shopping-db")
