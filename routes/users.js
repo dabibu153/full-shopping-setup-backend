@@ -42,10 +42,8 @@ router.post("/login", async (req, res) => {
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.send("invalid password");
 
-  const token = await jwt.sign({ _id: user._id }, process.env.SECRET_KEY, {
-    expiresIn: "1h",
-  });
-  res.header("auth-token", token).send("login successful");
+  const token = await jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+  await res.header("auth_token", token).send("login successful");
 });
 
 module.exports = router;

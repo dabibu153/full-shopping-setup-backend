@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-var cors = require("cors");
+const cors = require("cors");
 const products = require("./products");
 const users = require("./users");
 const cart = require("./cart");
@@ -12,7 +12,11 @@ mongoose
   .catch((err) => console.log(err.message));
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  exposedHeaders: "auth_token",
+};
+
+app.use(cors(corsOptions));
 
 app.use("/api/products", products);
 app.use("/api/users", users);
