@@ -4,6 +4,7 @@ const app = express();
 var cors = require("cors");
 const products = require("./products");
 const users = require("./users");
+const cart = require("./cart");
 
 mongoose
   .connect("mongodb://localhost/shopping-db")
@@ -15,5 +16,6 @@ app.use(cors());
 
 app.use("/api/products", products);
 app.use("/api/users", users);
+app.use("/api/cart", cart);
 
 app.listen((PORT = 5000), console.log("server started at 5000"));
